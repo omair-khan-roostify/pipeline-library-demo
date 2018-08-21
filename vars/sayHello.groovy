@@ -1,7 +1,10 @@
 #!/usr/bin/env groovy
 
 def call(String name = '.') {
-  echo "Hello, ${name}."
-  sh "./${name}/gradlew -b ./${name}/build.gradle test"
+stage ('test') {
+            steps {
+                sh "./sonarqube-scanner-gradle/gradlew -b ./sonarqube-scanner-gradle/build.gradle test"
+            }                
+        }
 }
 
